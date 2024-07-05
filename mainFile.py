@@ -3,7 +3,7 @@ from json import dump
 from functions import Score
 app = Flask(__name__)
 
-@app.route('/cricketAPP01')
+@app.route('/')
 def index():
     
     return  render_template("components/index.html",score = Score())
@@ -11,4 +11,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host = '0.0.0.0', port = 8020,debug=True)
