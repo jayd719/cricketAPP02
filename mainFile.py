@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-from json import dump
 from functions import Score
 app = Flask(__name__)
 
@@ -11,4 +10,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=8010,debug=True)
