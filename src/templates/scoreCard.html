@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Scorecard</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
+        <div class="border">
+            <div class="p-4">
+                <div class="flex flex-row justify-between md:flex-col text-center">
+                    <h1 class="text-5xl my-4">11/3</h1>
+                    <div id="currentStickers" class="pl-3">
+                        <div class="flex justify-between">
+                            <h1 class="active">Shoaib Bashir</h1>
+                            <h1 class="active">10(20)</h1>
+                        </div>
+                        <div class="flex justify-between">
+                            <h1 class="active">Ducket</h1>
+                            <h1 class="active">20(10)</h1>
+                        </div>
+                    </div>
+
+                    <div id="current Bolder" class="flex flex-col text-left md:mt-4">
+                        <h1 class="active">Siraj</h1>
+                        <table class="table table-xs">
+                            <tr>
+                                <td>3</td>
+                                <td>2</td>
+                                <td>1</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="border flex md:flex-col flex-col-2 justify-center p-4 gap-3">
+                <button class="btn btn-success">6</button>
+                <button class="btn btn-warning">4</button>
+                <button class="btn btn-info">3</button>
+                <button class="btn btn-info">2</button>
+                <button class="btn btn-primary">1</button>
+                <button class="btn btn-neutral">Dot</button>
+                <button class="btn btn-error">Wicket</button>
+            </div>
+        </div>
+        <div class="p-4 md:col-span-2 lg:col-span-3 border">
+            <h2 class="text-xl font-bold">England 1st Innings</h2>
+            <p class="text-right">427-10</p>
+            <table class="min-w-full mt-4 table table-zebra table">
+                <thead class="">
+                    <tr>
+                        <th class="">Batter</th>
+                        <th class="">R</th>
+                        <th class="">B</th>
+                        <th class="">4s</th>
+                        <th class="">6s</th>
+                        <th class="">SR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Repeat this block for each player -->
+                    <tr>
+                        <td class="">Duckett</td>
+                        <td class="">40</td>
+                        <td class="">47</td>
+                        <td class="">4</td>
+                        <td class="">0</td>
+                        <td class="">85.11</td>
+                    </tr>
+                    <!-- Repeat until the last player -->
+                    <tr>
+                        <td class="">Shoaib Bashir</td>
+                        <td class="">7*</td>
+                        <td class="">10</td>
+                        <td class="">1</td>
+                        <td class="">0</td>
+                        <td class="">70.00</td>
+                    </tr>
+                    <!-- Repeat until the last player -->
+                    <tr>
+                        <td class="">Shoaib Bashir</td>
+                        <td class="">7*</td>
+                        <td class="">10</td>
+                        <td class="">1</td>
+                        <td class="">0</td>
+                        <td class="">70.00</td>
+                    </tr>
+                    <!-- Repeat until the last player -->
+                    <tr>
+                        <td class="">Shoaib Bashir</td>
+                        <td class="">7*</td>
+                        <td class="">10</td>
+                        <td class="">1</td>
+                        <td class="">0</td>
+                        <td class="">70.00</td>
+                    </tr>
+                    <!-- Repeat until the last player -->
+                    <tr>
+                        <td class="">Shoaib Bashir</td>
+                        <td class="">7*</td>
+                        <td class="">10</td>
+                        <td class="">1</td>
+                        <td class="">0</td>
+                        <td class="">70.00</td>
+                    </tr>
+                    <!-- Repeat until the last player -->
+                    <tr>
+                        <td class="">Shoaib Bashir</td>
+                        <td class="">7*</td>
+                        <td class="">10</td>
+                        <td class="">1</td>
+                        <td class="">0</td>
+                        <td class="">70.00</td>
+                    </tr>
+                    <!-- Extra row -->
+                    <tr>
+                        <td class=" font-bold">Extras</td>
+                        <td class="" colspan="5">13 (b 8, lb 4, w 0, nb 1, p 0)</td>
+                    </tr>
+                    <!-- Total row -->
+                    <tr>
+                        <td class=" font-bold">Total</td>
+                        <td class=" font-bold" colspan="5">427 (10 wkts, 102 Ov)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="mt-4">
+                <h3 class="text-lg font-semibold">Fall of Wickets</h3>
+                <p class="">33-1 (Dan Lawrence, 6.5), 42-2 (Ollie Pope, 9.2), 82-3 (Duckett, 18.4), 130-4 (Harry Brook, 30.5), 192-5 (Jamie Smith, 48.6), 216-6 (Chris Woakes, 58.6), 308-7 (Root, 77.3), 393-8 (Matthew Potts, 93.3), 420-9 (Gus Atkinson, 99.3), 427-10 (Olly Stone, 101.6)</p>
+            </div>
+
+            <div class="mt-4">
+                <h3 class="text-lg font-semibold">Bowling</h3>
+                <table class="table text-left mt-2">
+                    <thead class="">
+                        <tr>
+                            <th class="">Bowler</th>
+                            <th class="">O</th>
+                            <th class="">M</th>
+                            <th class="">R</th>
+                            <th class="">W</th>
+                            <th class="">NB</th>
+                            <th class="">WD</th>
+                            <th class="">ECO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Repeat this block for each bowler -->
+                        <tr>
+                            <td class="">Asitha Fernando</td>
+                            <td class="">24</td>
+                            <td class="">2</td>
+                            <td class="">102</td>
+                            <td class="">5</td>
+                            <td class="">0</td>
+                            <td class="">0</td>
+                            <td class="">4.20</td>
+                        </tr>
+                        <!-- Repeat until the last bowler -->
+                        <tr>
+                            <td class="">Kamindu Mendis</td>
+                            <td class="">3</td>
+                            <td class="">0</td>
+                            <td class="">27</td>
+                            <td class="">0</td>
+                            <td class="">0</td>
+                            <td class="">0</td>
+                            <td class="">9.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="p-2 border">
+            <h2 class="text-xl font-bold">Overs</h2>
+            <p class="text-right">2.1/20</p>
+            <table class="table table-xs">
+                <thead class="">
+                    <tr>
+                        <th class="">Over</th>
+                        <th class="">1</th>
+                        <th class="">2</th>
+                        <th class="">3</th>
+                        <th class="">4</th>
+                        <th class="">5</th>
+                        <th class="">6</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Repeat this block for each player -->
+                    <tr class="">
+                        <td class="text-center">1</td>
+                        
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+    </div>
+
+    <div>
+
+    </div>
+    <script src="https://jayd719.github.io/staticfiles/themeChanger.js"></script>
+</body>
+</html>
