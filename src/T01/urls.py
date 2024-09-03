@@ -36,6 +36,6 @@ from .views import *
 
 urlpatterns = [
     path('', homepage,name="homepage"),
-    path("app01/",admin_app),
-    path("app02/",admin_app_test)
+    path("app01/",admin_app,name="app-demo"),
+    path("app02/",admin_app_test,name="app-testing")
 ]
