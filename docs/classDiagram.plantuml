@@ -1,0 +1,101 @@
+@startuml classDiagram
+TITLE Class Diagram
+
+class Match{
+    List <Innings> Innings
+    MatchType match_type
+    Date date
+    Team A
+    Team B
+    Time startTime
+    Location location
+    Boolean being_played
+}
+
+enum MatchType{
+T5
+T10
+T20
+ODI
+TEST
+}
+
+class Location{
+    String ground_name
+    String city
+}
+class Player{
+    String player_name
+    int jersey_number
+}
+Class Team{
+    String team_name
+    List<Players> players
+    Player captain
+}
+class Innings{
+    List<Player> battingUnit
+    List<Player> bowlingUnit
+    List<Over> overs
+    Int Innings_number
+}
+
+class Over{
+    int over_number
+    List<Ball> balls 
+}
+
+class Ball{
+    BallType ball_type
+    Double ball_speed
+    Player faced_by
+    Player bolwed_by
+    Int runs
+    Wicket wicket
+
+}
+
+enum BallType{
+    Fair
+    NoBall
+    WideBall
+    Wicket
+}
+
+Class Wicket{
+    WicketType wicket_type
+    Player player_out
+    Player bowler
+    Player catch_by
+    Player run_out_by
+    Player stump_by
+}
+enum WicketType{
+    Bolwed
+    HitWicket
+    Catch
+    RunOut
+    Retired
+    HurtRetired
+}
+
+
+
+Match--MatchType
+Match-- Location
+Match--Innings
+Match--Team
+
+Innings--Over
+
+Over--Ball
+Ball--BallType
+Ball--Wicket
+Wicket--WicketType
+
+Innings--Player
+Wicket--Player
+Ball--Player
+
+Team--Player
+@enduml

@@ -1,0 +1,106 @@
+@startuml d
+skinparam classAttributeIconSize 0
+
+' Enumeration for MatchType
+enum MatchType {
+  T5
+  T10
+  T20
+  ODI
+  TEST
+}
+
+' Enumeration for BallType
+enum BallType {
+  Fair
+  NoBall
+  WideBall
+  Wicket
+}
+
+' Enumeration for WicketType
+enum WicketType {
+  Bowled
+  HitWicket
+  Catch
+  RunOut
+  Retired
+  HurtRetired
+}
+
+class Match {
+  List<Innings> innings
+  MatchType match_type
+  Date date
+  Team teamA
+  Team teamB
+  Time startTime
+  Location location
+  Boolean being_played
+}
+
+class Location {
+  String ground_name
+  String city
+}
+
+class Team {
+  String team_name
+  List<Player> players
+}
+
+class Player {
+  String player_name
+  int jersey_number
+  Boolean wicket_keeper
+  Boolean captain
+}
+
+class Innings {
+  List<Player> battingUnit
+  List<Player> bowlingUnit
+  List<Over> overs
+  int innings_number
+  int totalRuns()
+  int totalWickets()
+}
+
+class Over {
+  int over_number
+  List<Ball> balls
+}
+
+class Ball {  
+  BallType ball_type
+  Double ball_speed
+  Player faced_by
+  Player bowled_by
+  int runs
+  Wicket wicket
+  boolean isBoundary
+}
+
+class Wicket {
+  WicketType wicket_type
+  Player player_out
+  Player bowler
+  Player catch_by
+  Player run_out_by
+  Player stump_by
+}
+
+' Associations with multiplicities
+Match-l-MatchType:match_type
+Match --> Location : location
+Match --> Team : teamA, teamB
+Match "1" --> "2..*" Innings
+Team "1" --> "11" Player : players
+Innings "1" --> "1..*" Over
+Over "1" --> "1..6*" Ball
+Ball --> Player : faced_by
+Ball --> Player : bowled_by
+Ball --> Wicket : wicket
+Wicket --> Player : player_out
+Wicket --> Player : bowler, catch_by, run_out_by, stump_by
+
+@enduml
