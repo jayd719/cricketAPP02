@@ -116,7 +116,7 @@ function initializeStatsContainer() {
 }
 
 // Create RUNS, WICKETS, OVERS, and player elements
-const RUNS = createSpanElement(["md:text-5xl", "text-2xl"], "100");
+const RUNS = createSpanElement(["md:text-5xl", "text-2xl","font-bold"], "100");
 const WICKETS = createSpanElement(["md:text-3xl", "text-xl"], "/10");
 const OVERS = createSpanElement(["md:text-2xl", "text-md"], "3.5");
 const BATSMAN_ONE = createCurrentPlayerElement("Batsman One", "12(2)");

@@ -20,6 +20,7 @@ function appendButtonsToContainer(container, buttons) {
   buttons.forEach(({ classes, text }) => {
     const button = createButtonElement(classes, text);
     button.id=text
+    button.classList.add('hover:scale-[1.05]',"hover:brightness-100","brightness-75")
     button.addEventListener('click',()=>{
         logText(button.id)
     })
@@ -27,7 +28,7 @@ function appendButtonsToContainer(container, buttons) {
   });
 }
 
-function logText(text){
+function logText(){
     console.log(text)
 }
 
