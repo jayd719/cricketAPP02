@@ -61,3 +61,4 @@ appendButtonsToContainer(controls, buttonConfigs);
 
 // Add the controls container to the controls stats container
 controlsStatsContainer.appendChild(controls);
+
