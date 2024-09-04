@@ -56,7 +56,7 @@ function createCurrentBowler() {
     "flex",
     "flex-col",
     "text-left",
-    "md:mt-4",
+    "mt-4",
   ]);
 
   // Create and append the bowler's details
@@ -109,15 +109,17 @@ function initializeStatsContainer() {
   const currentStrikers = createDivElement(["my-2"]);
   currentStrikers.appendChild(BATSMAN_ONE);
   currentStrikers.appendChild(BATSMAN_TWO);
-  currentStats.appendChild(currentStrikers);
-  currentStats.appendChild(BOWLER);
+  const currentPlayers = createDivElement(["s"]);
+  currentPlayers.appendChild(currentStrikers);
+  currentPlayers.appendChild(BOWLER);
+  currentStats.appendChild(currentPlayers);
 
   return currentStats;
 }
 
 // Create RUNS, WICKETS, OVERS, and player elements
-const RUNS = createSpanElement(["md:text-5xl", "text-2xl","font-bold"], "100");
-const WICKETS = createSpanElement(["md:text-3xl", "text-xl"], "/10");
+const RUNS = createSpanElement(["text-6xl", "font-bold"], "100");
+const WICKETS = createSpanElement(["text-5xl"], "/10");
 const OVERS = createSpanElement(["md:text-2xl", "text-md"], "3.5");
 const BATSMAN_ONE = createCurrentPlayerElement("Batsman One", "12(2)");
 const BATSMAN_TWO = createCurrentPlayerElement("Batsman Two", "33(22)");

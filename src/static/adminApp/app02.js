@@ -20,7 +20,7 @@ function appendButtonsToContainer(container, buttons) {
   buttons.forEach(({ classes, text }) => {
     const button = createButtonElement(classes, text);
     button.id=text
-    button.classList.add('hover:scale-[1.05]',"hover:brightness-100","brightness-75")
+    button.classList.add('hover:scale-[1.05]')
     button.addEventListener('click',()=>{
         logText(button.id)
     })
@@ -28,7 +28,7 @@ function appendButtonsToContainer(container, buttons) {
   });
 }
 
-function logText(){
+function logText(text){
     console.log(text)
 }
 
@@ -36,8 +36,7 @@ function logText(){
 const controls = createDivElement([
   "border",
   "flex",
-  "md:flex-col",
-  "flex-col-2",
+  "flex-col",
   "justify-center",
   "p-4",
   "gap-3",
@@ -52,6 +51,9 @@ const buttonConfigs = [
   { classes: ["btn", "btn-primary"], text: "1" },
   { classes: ["btn", "btn-neutral"], text: "Dot" },
   { classes: ["btn", "btn-error"], text: "Wicket" },
+  { classes: ["btn", "btn-error"], text: "Wide" },
+  { classes: ["btn", "btn-error"], text: "NoBall" },
+  { classes: ["btn", "btn-error"], text: "By" }
 ];
 
 // Append buttons to the controls container
