@@ -9,7 +9,8 @@ class ScoreBoard {
     // Initialize instance properties with the provided parameters
     this.battingUnit = battingUnit;
     this.bowlingUnit = bowlingUnit;
-    this.overs = overs;
+    this.oversList = overs;
+    this.overs = [1,2];
     this.totalOvers = totalOvers;
     this.fallOfWickets = [];
     this.totalRuns = 0;
@@ -38,7 +39,7 @@ class ScoreBoard {
    * @returns {number} The total runs scored.
    */
   getTotal() {
-    this.overs.forEach((over) => {
+    this.oversList.forEach((over) => {
       over.forEach((ball) => {
         this.totalRuns = this.totalRuns + ball;
       });
@@ -53,7 +54,7 @@ class ScoreBoard {
     return {
       battingUnit: this.battingUnit,
       bowlingUnit: this.bowlingUnit,
-      overs: this.overs,
+      overs: this.oversList,
       totalRuns: this.totalRuns,
       balls: this.balls,
     };
@@ -62,5 +63,6 @@ class ScoreBoard {
   update_labels() {
     this.RUNS.textContent = this.totalRuns;
     this.WICKETS.textContent = `/${this.wickets}`;
+    this.OVERS.textContent=`${this.overs[0]}.${this.overs[1]}`
   }
 }
