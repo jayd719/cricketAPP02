@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 text-center text-sm">
+        <p>Learn more about <a href="#" class="underline">#FlutterInProduction</a> →</p>
+    </header>
+    <nav class="flex items-center justify-between px-6 py-4 bg-white shadow-md">
+        <div class="flex items-center space-x-2">
+            <img src="https://flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png" alt="Flutter Logo"
+                class="h-6">
+        </div>
+        <div class="hidden md:flex space-x-6 text-gray-700">
+            <a href="#" class="hover:text-blue-600">Multi-Platform</a>
+            <a href="#" class="text-blue-600 font-semibold">Development</a>
+            <a href="#" class="hover:text-blue-600">Ecosystem</a>
+            <a href="#" class="hover:text-blue-600">Showcase</a>
+            <a href="#" class="hover:text-blue-600">Docs</a>
+        </div>
+        <div class="flex space-x-4">
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-md">Get started</button>
+        </div>
+    </nav>
+    <section class="flex flex-col md:flex-row items-center justify-center px-6 py-12">
+        <div class="max-w-lg text-center md:text-left">
+            <h1 class="text-4xl font-bold text-gray-900">Build more with Flutter</h1>
+        </div>
+        <div class="relative flex items-center justify-center mt-6 md:mt-0">
+            <img src="https://storage.googleapis.com/cms-storage-bucket/08fffc930eee0a035ef1.png" alt="Flutter on Web"
+                class="w-80 shadow-lg">
+            <div class="absolute -bottom-8 left-8 bg-gray-900 text-white text-sm p-4 rounded-md shadow-lg">
+                <pre class="text-left">
+// Abstract classes can't be instantiated.
+abstract class Item {
+  void use();
+}
+
+// Classes can implement other classes.
+class Chest<T> implements Item {
+  final List<T> contents;
+  Chest(this.contents);
+}
+                </pre>
+            </div>
+        </div>
+    </section>
+    <section class="bg-gradient-to-r from-blue-50 to-green-50 py-12 px-6 text-center">
+        <p class="text-xl text-gray-900 max-w-3xl mx-auto">
+            Flutter transforms the app development process so you can ship more, faster.
+            Deploy to six targets from a single codebase.
+        </p>
+    </section>
+    <section class="py-12 px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div>
+            <h2 class="text-2xl font-bold">Enhanced productivity</h2>
+            <p class="text-gray-700 mt-2">Ship features faster with less code while targeting Android, iOS, web,
+                Windows, macOS, and Linux in a single codebase.</p>
+        </div>
+        <div>
+            <h2 class="text-2xl font-bold">Native performance</h2>
+            <p class="text-gray-700 mt-2">Flutter compiles down to native machine code for fast apps and beautiful
+                animations.</p>
+        </div>
+        <div>
+            <h2 class="text-2xl font-bold">Always open source</h2>
+            <p class="text-gray-700 mt-2">Trusted by a global community of contributors and supported by Google, Flutter
+                is open, transparent, and reliable.</p>
+        </div>
+    </section>
+    <section class="bg-blue-600 py-16 text-white text-center">
+        <h2 class="text-4xl font-bold">Build production-quality apps (and have fun doing it)</h2>
+    </section>
+    <footer class="bg-gray-100 py-12 px-6 text-gray-900">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <img src="https://flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png"
+                    alt="Flutter Logo" class="h-8">
+            </div>
+            <div>
+                <h3 class="font-semibold">About Flutter</h3>
+                <ul>
+                    <li><a href="#" class="hover:underline">Careers</a></li>
+                    <li><a href="#" class="hover:underline">News</a></li>
+                    <li><a href="#" class="hover:underline">Brand</a></li>
+                    <li><a href="#" class="hover:underline">Culture</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold">Learn Flutter</h3>
+                <ul>
+                    <li><a href="#" class="hover:underline">Learning Journey</a></li>
+                    <li><a href="#" class="hover:underline">Codelabs</a></li>
+                    <li><a href="#" class="hover:underline">Samples</a></li>
+                    <li><a href="#" class="hover:underline">Cookbook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-sm text-gray-600 mt-8">
+            Except as otherwise noted, this work is licensed under a Creative Commons Attribution 4.0 International
+            License,
+            and code samples are licensed under the BSD License.
+        </div>
+        <div class="text-center mt-4">
+            <a href="#" class="text-gray-600 hover:underline mx-2">Terms</a>
+            <a href="#" class="text-gray-600 hover:underline mx-2">Privacy</a>
+            <a href="#" class="text-gray-600 hover:underline mx-2">Security</a>
+        </div>
+    </footer>
+</body>
+
+</html>
