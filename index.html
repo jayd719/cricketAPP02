@@ -6,51 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flutter Web</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="homepage/homepage.js"></script>
+
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 text-xs overflow-x-hidden">
     <script src="homepage/header.js"></script>
-    <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 text-center text-sm">
-        <p>Learn more about <a href="#" class="underline">#FlutterInProduction</a> →</p>
-    </header>
-    <nav class="flex items-center justify-between px-6 py-4 bg-white shadow-md">
-        <!-- Logo -->
-        <div class="flex items-center space-x-2">
-            <a href="https://flutter.dev">
-                <img src="https://flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png"
-                    alt="Flutter Logo" class="h-8 md:h-6">
-            </a>
-        </div>
-
-        <!-- Navigation Links -->
-        <div class="hidden md:flex space-x-6 text-gray-700">
-            <a href="#" class="hover:text-blue-600 transition duration-300">Multi-Platform</a>
-            <a href="#" class="text-blue-600 font-semibold">Development</a>
-            <a href="#" class="hover:text-blue-600 transition duration-300">Ecosystem</a>
-            <a href="#" class="hover:text-blue-600 transition duration-300">Showcase</a>
-            <a href="#" class="hover:text-blue-600 transition duration-300">Docs</a>
-        </div>
-
-        <!-- CTA & Mobile Menu -->
-        <div class="flex items-center space-x-4">
-            <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">
-                Get Started
-            </button>
-
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden focus:outline-none">
-                <svg class="w-6 h-6 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-        </div>
-    </nav>
+    <script src="homepage/navbar.js"></script>
 
     <section
         class="flex flex-col md:flex-row items-center justify-center px-6 py-12 space-y-8 md:space-y-0 md:space-x-12">
-        <div class="relative flex items-center justify-center">
+        <div class="relative flex items-center justify-center scale-[1.65]">
             <img src="homepage/assets/img1.png" alt="Flutter on Web" class="w-64 md:w-80 lg:w-96">
         </div>
         <div class="max-w-lg text-center md:text-left">
@@ -66,7 +31,7 @@
 
 
     <section class="bg-gradient-to-r from-blue-50 to-green-50 py-16 px-6 text-center">
-        <div class="max-w-3xl mx-auto">
+        <div class="max-w-3xl mx-auto py-16">
             <h2 class="text-3xl font-bold text-gray-900 leading-tight">
                 Accelerate Your App Development with <span class="text-blue-600">Flutter</span>
             </h2>
@@ -125,8 +90,24 @@
     </section>
 
 
-    <section class="bg-blue-600 py-20 text-white text-center">
-        <div class="max-w-4xl mx-auto px-6">
+    <section
+        class="flex flex-col md:flex-row items-center justify-center px-6 py-12 space-y-8 md:space-y-0 md:space-x-12">
+        <div class="max-w-lg text-center md:text-left">
+            <h1 class="text-4xl font-bold text-gray-900 leading-tight">
+                Build More with <span class="text-blue-600">Flutter</span>
+            </h1>
+            <p class="mt-4 text-gray-700">
+                Create high-quality applications efficiently with Flutter’s powerful framework.
+                Optimize your development process and bring your ideas to life across multiple platforms.
+            </p>
+        </div>
+        <div class="relative flex items-center justify-center transform scale-[2.4] translate-y-20">
+            <img src="homepage/assets/img2.png" alt="Flutter on Web" class="w-64 md:w-80 lg:w-96">
+        </div>
+    </section>
+
+    <section class="bg-gradient-to-r from-blue-600 to-purple-600 py-20 text-white text-center">
+        <div class="max-w-4xl mx-auto px-6  mt-12">
             <h2 class="text-5xl font-extrabold leading-tight">
                 Build Production-Quality Apps <br> & Have Fun Doing It!
             </h2>
@@ -142,13 +123,73 @@
 
 
 
+    <section
+        class="flex flex-col md:flex-row items-center justify-center px-6 py-12 space-y-8 md:space-y-0 md:space-x-12">
+        <div class="relative flex items-center justify-center scale-[1.55] translate-y-[-200px]">
+            <img src="homepage/assets/img3.png" alt="Flutter on Web" class="w-64 md:w-80 lg:w-96">
+        </div>
+        <div class="max-w-lg text-center md:text-left py-16">
+            <h1 class="text-4xl font-bold text-gray-900 leading-tight">
+                Build More with <span class="text-blue-600">Flutter</span>
+            </h1>
+            <p class="mt-4 text-gray-700">
+                Create high-quality applications efficiently with Flutter’s powerful framework.
+                Optimize your development process and bring your ideas to life across multiple platforms.
+            </p>
 
-    <footer class="bg-gray-100 py-12 px-6 text-gray-900">
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-5 py-10">
+                <div class="flex flex-col items-center">
+                    <div class="bg-blue-100 p-4 rounded-full">
+                        <svg class="w-10 h-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m0 0a9 9 0 11-5.67 3.68" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-700 mt-2 max-w-md">
+                        Ship features faster with less code while targeting Android, iOS, web, Windows, macOS, and
+                        Linux—all
+                        from a
+                        single codebase.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="bg-green-100 p-4 rounded-full">
+                        <svg class="w-10 h-10 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4H8l4-4m0 0l4 4m-4-4v12" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-700 mt-2 max-w-md">
+                        Flutter compiles to native machine code, delivering fast performance and smooth animations.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="bg-yellow-100 p-4 rounded-full">
+                        <svg class="w-10 h-10 text-yellow-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c1.38 0 2.5-1.12 2.5-2.5S13.38 3 12 3 9.5 4.12 9.5 5.5 10.62 8 12 8zM3 21h18M5 15h14M7 12h10" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-700 mt-2 max-w-md">
+                        Backed by Google and a thriving global community, Flutter remains open-source, transparent, and
+                        developer-friendly.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </section>
+
+
+    <footer class="bg-gray-200 py-12 px-6 text-gray-900">
         <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             <!-- Logo Section -->
-            <div>
-                <img src="https://flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png"
-                    alt="Flutter Logo" class="h-10">
+            <div class="">
+                <img src="homepage/assets/img5.png" alt="Flutter Logo" class="h-48">
                 <p class="text-sm text-gray-700 mt-2">
                     Build beautiful apps for any screen with Flutter.
                 </p>
@@ -211,5 +252,6 @@
     </footer>
 
 </body>
+
 
 </html>

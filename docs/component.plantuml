@@ -1,0 +1,34 @@
+@startuml components
+title Cricket Score Tracker - Component Diagram
+
+' Define components
+component "User Interface" as UI {
+    interface "User Input" as UIInput
+    interface "Display Score" as UIDisplay
+}
+
+component "Controller" as Controller {
+    interface "Handle User Actions" as ControllerInput
+    interface "Update Model" as ControllerUpdate
+}
+
+component "Model" as Model {
+    interface "Manage Match Data" as ModelData
+}
+
+component "Database" as Database {
+    interface "Store Match Data" as DBAccess
+}
+
+' Define relationships
+UIInput --> ControllerInput : User inputs (runs, wickets, overs)
+UIDisplay <-- ControllerUpdate : View updates
+
+ControllerInput --> Controller
+ControllerUpdate --> ModelData
+ModelData --> DBAccess : Save match data
+
+UI -[hidden]-> Model
+Controller -[hidden]-> Database
+
+@enduml

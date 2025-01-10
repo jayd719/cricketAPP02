@@ -1,0 +1,79 @@
+@startuml Arch1
+title Cricket Score Tracker - MVC Architecture
+
+' Define components
+package "Model (Data Layer)" {
+    class Team {
+        + name: str
+        + players: list
+        + score: int
+        + wickets: int
+        + overs: float
+        + extras: int
+        + add_player(player)
+        + update_score(runs, is_extra)
+        + add_wicket()
+    }
+
+    class Player {
+        + name: str
+        + runs: int
+        + balls_faced: int
+        + fours: int
+        + sixes: int
+        + is_out: bool
+        + update_runs(runs)
+        + mark_out()
+    }
+
+    class Bowler {
+        + name: str
+        + overs_bowled: int
+        + runs_conceded: int
+        + wickets_taken: int
+        + update_stats(runs, is_extra, is_wicket)
+    }
+
+    class Match {
+        + team1: Team
+        + team2: Team
+        + current_batting_team: Team
+        + current_bowling_team: Team
+        + overs_limit: int
+        + completed: bool
+        + update_batsmen(batsman1, batsman2)
+        + update_bowler(bowler)
+        + switch_innings()
+    }
+}
+
+package "Controller (Business Logic)" {
+    class MatchController {
+        + record_run(runs, is_extra)
+        + record_wicket()
+        + change_bowler(bowler)
+        + next_over()
+    }
+}
+
+package "View (UI Layer)" {
+    class MatchView {
+        + display_match_summary(match)
+    }
+}
+
+' Relationships
+Team "1" -- "11" Player
+Team "1" -- "11" Bowler
+Match "1" -- "2" Team
+MatchController "1" -- "1" Match
+MatchView "1" -- "1" Match
+
+' User interactions
+
+UI --> MatchController : Inputs runs, wickets, bowler change
+MatchController --> Match : Updates match data
+Match --> MatchView : Provides updated data
+MatchView --> UI : Displays scoreboard
+
+@enduml
