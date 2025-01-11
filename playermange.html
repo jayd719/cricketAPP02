@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team & Player Management - Cricket Score Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+
+        <!-- Header -->
+        <header class="bg-blue-600 text-white text-center p-4 rounded-lg shadow-md">
+            <h1 class="text-3xl font-bold">Team & Player Management</h1>
+        </header>
+
+        <!-- Team & Player Management Form -->
+        <div class="mt-6 bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4">Select Playing XI</h2>
+
+            <form class="space-y-4">
+                <!-- Select Playing XI for Team A -->
+                <div>
+                    <label class="block font-medium">Team A Players:</label>
+                    <select multiple class="w-full p-2 border rounded-lg">
+                        <option>Player 1</option>
+                        <option>Player 2</option>
+                        <option>Player 3</option>
+                        <option>Player 4</option>
+                        <option>Player 5</option>
+                        <option>Player 6</option>
+                        <option>Player 7</option>
+                        <option>Player 8</option>
+                        <option>Player 9</option>
+                        <option>Player 10</option>
+                        <option>Player 11</option>
+                    </select>
+                </div>
+
+                <!-- Select Playing XI for Team B -->
+                <div>
+                    <label class="block font-medium">Team B Players:</label>
+                    <select multiple class="w-full p-2 border rounded-lg">
+                        <option>Player 1</option>
+                        <option>Player 2</option>
+                        <option>Player 3</option>
+                        <option>Player 4</option>
+                        <option>Player 5</option>
+                        <option>Player 6</option>
+                        <option>Player 7</option>
+                        <option>Player 8</option>
+                        <option>Player 9</option>
+                        <option>Player 10</option>
+                        <option>Player 11</option>
+                    </select>
+                </div>
+
+                <!-- Assign Captain & Wicketkeeper -->
+                <div>
+                    <label class="block font-medium">Select Captain for Team A:</label>
+                    <select class="w-full p-2 border rounded-lg">
+                        <option>Player 1</option>
+                        <option>Player 2</option>
+                        <option>Player 3</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-medium">Select Wicketkeeper for Team A:</label>
+                    <select class="w-full p-2 border rounded-lg">
+                        <option>Player 1</option>
+                        <option>Player 2</option>
+                        <option>Player 3</option>
+                    </select>
+                </div>
+
+                <!-- Assign Captain & Wicketkeeper for Team B -->
+                <div>
+                    <label class="block font-medium">Select Captain for Team B:</label>
+                    <select class="w-full p-2 border rounded-lg">
+                        <option>Player 1</option>
+                        <option>Player 2</option>
+                        <option>Player 3</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-medium">Select Wicketkeeper for Team B:</label>
+                    <select class="w-full p-2 border rounded-lg">
+                        <option>Player 1</option>
+                        <option>Player 2</option>
+                        <option>Player 3</option>
+                    </select>
+                </div>
+
+                <!-- Substitutions -->
+                <div>
+                    <label class="block font-medium">Substitutes (Optional):</label>
+                    <input type="text" class="w-full p-2 border rounded-lg" placeholder="Enter substitute players">
+                </div>
+
+                <!-- Proceed Button -->
+                <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Proceed
+                    to Match</button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-6 text-center text-gray-600">
+            <p>&copy; 2025 Cricket Score Tracker</p>
+        </footer>
+    </div>
+</body>
+
+</html>

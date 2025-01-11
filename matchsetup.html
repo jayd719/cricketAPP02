@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Setup - Cricket Score Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+
+        <!-- Header -->
+        <header class="bg-blue-600 text-white text-center p-4 rounded-lg shadow-md">
+            <h1 class="text-3xl font-bold">Match Setup</h1>
+        </header>
+
+        <!-- Match Setup Form -->
+        <div class="mt-6 bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4">Enter Match Details</h2>
+
+            <form class="space-y-4">
+                <!-- Team Selection -->
+                <div>
+                    <label class="block font-medium">Select Teams:</label>
+                    <select class="w-full p-2 border rounded-lg">
+                        <option>Team A</option>
+                        <option>Team B</option>
+                        <option>Team C</option>
+                        <option>Team D</option>
+                    </select>
+                    <select class="w-full p-2 border rounded-lg mt-2">
+                        <option>Team X</option>
+                        <option>Team Y</option>
+                        <option>Team Z</option>
+                        <option>Team W</option>
+                    </select>
+                </div>
+
+                <!-- Toss Decision -->
+                <div>
+                    <label class="block font-medium">Toss Winner:</label>
+                    <select class="w-full p-2 border rounded-lg">
+                        <option>Team A</option>
+                        <option>Team B</option>
+                    </select>
+                    <label class="block font-medium mt-2">Decision:</label>
+                    <select class="w-full p-2 border rounded-lg">
+                        <option>Bat</option>
+                        <option>Bowl</option>
+                    </select>
+                </div>
+
+                <!-- Match Type -->
+                <div>
+                    <label class="block font-medium">Match Type:</label>
+                    <select class="w-full p-2 border rounded-lg">
+                        <option>T20</option>
+                        <option>ODI</option>
+                        <option>Test</option>
+                    </select>
+                </div>
+
+                <!-- Venue -->
+                <div>
+                    <label class="block font-medium">Venue:</label>
+                    <input type="text" class="w-full p-2 border rounded-lg" placeholder="Enter venue name">
+                </div>
+
+                <!-- Umpire Details -->
+                <div>
+                    <label class="block font-medium">Umpire Names:</label>
+                    <input type="text" class="w-full p-2 border rounded-lg" placeholder="Enter umpire names">
+                </div>
+
+                <!-- Start Match Button -->
+                <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Start
+                    Match</button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-6 text-center text-gray-600">
+            <p>&copy; 2025 Cricket Score Tracker</p>
+        </footer>
+    </div>
+</body>
+
+</html>

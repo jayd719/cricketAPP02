@@ -44,7 +44,7 @@ function renderNavbar() {
 
     // Get Started Button
     const ctaButton = document.createElement("button");
-    ctaButton.className = "bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300";
+    ctaButton.className = "bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300";
     ctaButton.textContent = "Get Started";
 
     // Mobile Menu Button
@@ -81,3 +81,29 @@ function renderNavbar() {
 
 // Call function to render the navbar
 renderNavbar();
+
+// window.addEventListener("scroll", function () {
+//     console.log("User is scrolling...");
+// });
+
+
+// const background = document.createElement("div");
+// background.className = "absolute top-0 left-0 w-full h-full bg-green-200 -z-10";
+// background.style.height = maxY
+// document.body.prepend(background); // Ensures it's behind all other elements
+
+// const maxY = document.documentElement.scrollHeight * 4;
+// const UPPER = 255
+// window.addEventListener("scroll", () => {
+
+//     let scrollRatio = Math.min(window.scrollY / maxY, 1);
+//     let currVal = Math.round(UPPER * (1 - scrollRatio));
+
+//     let hexValue = currVal.toString(16).padStart(2, "0"); // "ff"
+
+//     document.body.style.backgroundColor = `#${hexValue}${hexValue}${hexValue}`
+
+//     console.log(`window.scrollY: ${window.scrollY}`)
+// })
+
+

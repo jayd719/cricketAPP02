@@ -1,86 +1,318 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cricket Score Tracker</title>
+    <title>Flutter Web - Cricklytics</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
 
-<body class="bg-gray-100 text-gray-900">
-    <header class="bg-blue-600 text-white p-6 text-center">
-        <h1 class="text-3xl font-bold">🏏 Cricket Score Tracker</h1>
-        <p class="text-lg">Your Ultimate Cricket Scoring Companion</p>
-        <nav class="mt-4">
-            <ul class="flex justify-center space-x-6">
-                <li><a href="#features" class="hover:underline">Features</a></li>
-                <li><a href="#screenshots" class="hover:underline">Screenshots</a></li>
-                <li><a href="#tech-stack" class="hover:underline">Tech Stack</a></li>
-                <li><a href="#download" class="hover:underline">Download</a></li>
-                <li><a href="#contact" class="hover:underline">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="bg-gradient-to-r from-blue-50 to-green-50 text-gray-800 overflow-x-hidden text-xs">
+    <script src="homepage/header.js"></script>
+    <script src="homepage/navbar.js"></script>
 
-    <section id="about" class="p-8 text-center">
-        <h2 class="text-2xl font-bold">About the Project</h2>
-        <p class="mt-4">The Cricket Score Tracker is a feature-rich application designed to help teams, scorers, and
-            fans keep track of live or recorded cricket matches. It provides real-time scoring, match analytics, and DLS
-            calculation for rain-affected games.</p>
-    </section>
 
-    <section id="features" class="p-8 bg-white shadow-md rounded-lg mx-6">
-        <h2 class="text-2xl font-bold text-center">Key Features</h2>
-        <ul class="mt-4 list-disc list-inside text-lg">
-            <li>📌 Match Setup with Teams, Venue, and Umpire Details</li>
-            <li>📊 Real-Time Scoring with Runs, Wickets, and Extras</li>
-            <li>🔄 Undo Last Ball and Over Tracking</li>
-            <li>📈 Player Stats, Run Rate, and Graphical Insights</li>
-            <li>🏆 Match Summary and Results</li>
-            <li>🌧 DLS Method Calculation</li>
-        </ul>
-    </section>
+    <main class="pt-5">
+        <section class="container mx-auto px-6 py-16 md:py-10 flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
+                    Real-Time Cricket Scoring & Analytics
+                </h1>
+                <h2
+                    class="text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-6">
+                    Cricklytics
+                </h2>
+                <p class="text-xl text-gray-600 mb-8">
+                    A powerful multi-platform application designed for seamless match management and real-time scoring.
+                </p>
+                <a href="#cta"
+                    class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 inline-block">
+                    Get Started
+                </a>
+            </div>
+            <div class="md:w-1/2 relative">
+                <img src="homepage/assets/img1.png" alt="Flutter on Web"
+                    class="w-full max-w-lg mx-auto transform scale-[1.5] transition duration-300">
+            </div>
+        </section>
 
-    <section id="screenshots" class="p-8 text-center">
-        <h2 class="text-2xl font-bold">Project Screenshots</h2>
-        <div class="flex justify-center space-x-4 mt-4">
-            <img src="screenshot1.png" alt="Match Setup" class="w-1/3 rounded-lg shadow">
-            <img src="screenshot2.png" alt="Live Score Display" class="w-1/3 rounded-lg shadow">
-            <img src="screenshot3.png" alt="Player Stats" class="w-1/3 rounded-lg shadow">
+        <section id="features" class="bg-white py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+                    Accelerate Your App Development with <span class="text-blue-600">Flutter</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div
+                        class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition duration-300">
+                        <div class="bg-blue-200 p-3 rounded-full inline-block mb-4">
+                            <svg class="w-8 h-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Enhanced Productivity</h3>
+                        <p class="text-gray-600">
+                            Ship features faster with less code while targeting multiple platforms from a single
+                            codebase.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition duration-300">
+                        <div class="bg-green-200 p-3 rounded-full inline-block mb-4">
+                            <svg class="w-8 h-8 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Native Performance</h3>
+                        <p class="text-gray-600">
+                            Flutter compiles to native machine code, delivering fast performance and smooth animations.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition duration-300">
+                        <div class="bg-yellow-200 p-3 rounded-full inline-block mb-4">
+                            <svg class="w-8 h-8 text-yellow-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Always Open Source</h3>
+                        <p class="text-gray-600">
+                            Backed by Google and a thriving global community, Flutter remains open-source and
+                            developer-friendly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="container mx-auto px-6 py-16 md:py-24">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 relative">
+                    <img src="homepage/assets/img2.png" alt="Flutter Development"
+                        class="w-full max-w-lg mx-auto scale-[1.75] transform hover:rotate-3 transition duration-300 -translate-y-20">
+                </div>
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        Build More with <span class="text-blue-600">Flutter</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Create high-quality applications efficiently with Flutter's powerful framework.
+                        Optimize your development process and bring your ideas to life across multiple platforms.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Cross-platform development
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Hot reload for instant updates
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Rich set of customizable widgets
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="cta" class="bg-gradient-to-r from-blue-600 to-purple-600 py-16 md:py-24">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">
+                    Build Production-Quality Apps & Have Fun Doing It!
+                </h2>
+                <p class="text-xl text-blue-100 mb-12 max-w-3xl mx-auto">
+                    Leverage Flutter's powerful features to create stunning, high-performance apps effortlessly.
+                    Join the community of developers who are changing the game with Flutter.
+                </p>
+                <a href="#"
+                    class="bg-white text-blue-600 font-semibold px-8 py-4 rounded-lg shadow-md hover:bg-blue-50 transition duration-300 inline-block text-lg">
+                    Start Your Flutter Journey
+                </a>
+            </div>
+        </section>
+
+
+        <section
+            class="flex flex-col md:flex-row items-center justify-center px-6 py-12 space-y-8 md:space-y-0 md:space-x-12">
+
+            <div class="max-w-lg text-center md:text-left py-16">
+                <h1 class="text-4xl font-bold text-gray-900 leading-tight">
+                    Build More with <span class="text-blue-600">Flutter</span>
+                </h1>
+                <p class="mt-4 text-gray-700">
+                    Create high-quality applications efficiently with Flutter’s powerful framework.
+                    Optimize your development process and bring your ideas to life across multiple platforms.
+                </p>
+
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-5 py-10">
+                    <div class="flex flex-col items-center">
+                        <div class="bg-blue-100 p-4 rounded-full">
+                            <svg class="w-10 h-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m0 0a9 9 0 11-5.67 3.68" />
+                            </svg>
+                        </div>
+                        <p class="text-gray-700 mt-2 max-w-md">
+                            Ship features faster with less code while targeting Android, iOS, web, Windows, macOS, and
+                            Linux—all
+                            from a
+                            single codebase.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div class="bg-green-100 p-4 rounded-full">
+                            <svg class="w-10 h-10 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4H8l4-4m0 0l4 4m-4-4v12" />
+                            </svg>
+                        </div>
+                        <p class="text-gray-700 mt-2 max-w-md">
+                            Flutter compiles to native machine code, delivering fast performance and smooth animations.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div class="bg-yellow-100 p-4 rounded-full">
+                            <svg class="w-10 h-10 text-yellow-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8c1.38 0 2.5-1.12 2.5-2.5S13.38 3 12 3 9.5 4.12 9.5 5.5 10.62 8 12 8zM3 21h18M5 15h14M7 12h10" />
+                            </svg>
+                        </div>
+                        <p class="text-gray-700 mt-2 max-w-md">
+                            Backed by Google and a thriving global community, Flutter remains open-source, transparent,
+                            and
+                            developer-friendly.
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="relative flex items-center justify-center scale-[2] -translate-y-20">
+                <img src="homepage/assets/img3.png" alt="Flutter on Web"
+                    class="w-64 md:w-80 lg:w-96 hover:-rotate-3 transition duration-300">
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-100 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <img src="homepage/assets/img5.png" alt="Flutter Logo" class="h-16 mb-4">
+                    <p class="text-gray-600">
+                        Build beautiful apps for any screen with Flutter.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">About Flutter</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Careers</a>
+                        </li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">News</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Brand</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Culture</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Learn Flutter</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Learning
+                                Journey</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Codelabs</a>
+                        </li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Samples</a>
+                        </li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Cookbook</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="Twitter"
+                            class="text-gray-400 hover:text-blue-500 transition duration-300">
+                            <i class="fab fa-twitter text-2xl"></i>
+                        </a>
+                        <a href="#" aria-label="LinkedIn"
+                            class="text-gray-400 hover:text-blue-700 transition duration-300">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                        <a href="#" aria-label="GitHub"
+                            class="text-gray-400 hover:text-gray-900 transition duration-300">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                        <a href="#" aria-label="YouTube"
+                            class="text-gray-400 hover:text-red-500 transition duration-300">
+                            <i class="fab fa-youtube text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-200 text-center">
+                <p class="text-gray-600 text-sm">
+                    Except as otherwise noted, this work is licensed under a Creative Commons Attribution 4.0
+                    International License, and code samples are licensed under the BSD License.
+                </p>
+                <div class="mt-4 space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Terms</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Privacy</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Security</a>
+                </div>
+            </div>
         </div>
-    </section>
-
-    <section id="tech-stack" class="p-8 bg-white shadow-md rounded-lg mx-6">
-        <h2 class="text-2xl font-bold text-center">Technology Stack</h2>
-        <ul class="mt-4 list-disc list-inside text-lg">
-            <li>Frontend: React.js / Flutter</li>
-            <li>Backend: Node.js / Django</li>
-            <li>Database: Firebase / MongoDB</li>
-            <li>Deployment: AWS / Heroku</li>
-        </ul>
-    </section>
-
-    <section id="download" class="p-8 text-center">
-        <h2 class="text-2xl font-bold">Download & Installation</h2>
-        <p class="mt-4">Get the latest version of the Cricket Score Tracker from GitHub:</p>
-        <a href="https://github.com/your-username/cricket-score-tracker"
-            class="bg-blue-600 text-white px-6 py-3 mt-4 rounded-lg inline-block hover:bg-blue-700">View on GitHub</a>
-    </section>
-
-    <section id="contact" class="p-8 bg-white shadow-md rounded-lg mx-6">
-        <h2 class="text-2xl font-bold text-center">Contact & Support</h2>
-        <p class="mt-4 text-center">If you have any questions or issues, feel free to reach out:</p>
-        <ul class="mt-4 text-center">
-            <li>Email: support@example.com</li>
-            <li>GitHub: <a href="https://github.com/your-username"
-                    class="text-blue-600 hover:underline">your-username</a></li>
-        </ul>
-    </section>
-
-    <footer class="bg-blue-600 text-white text-center p-4 mt-6">
-        <p>&copy; 2025 Cricket Score Tracker. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('button');
+        const mobileMenu = document.querySelector('.md\\:flex');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 
 </html>
