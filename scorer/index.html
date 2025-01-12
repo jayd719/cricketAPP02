@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Score Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="max-w-6xl mx-auto px-6 py-8">
+        <!-- Live Match Score Display -->
+        <div class="mt-8 bg-white p-6 rounded-lg shadow-md text-center">
+            <h2 class="text-3xl font-semibold">Team A vs Team B</h2>
+            <p id="score" class="text-xl text-gray-700 mt-2"></p>
+            <p class="text-xl text-gray-700">Target: <span class="font-bold">180</span></p>
+            <p class="text-xl text-gray-700">Required Run Rate: <span class="font-bold">8.5</span></p>
+        </div>
+
+        <!-- Ball Input Controls -->
+        <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Ball-by-Ball Input</h2>
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <button id="btn-dot" class="bg-gray-200 p-4 rounded-lg hover:bg-gray-300">0</button>
+                <button id="btn-one" class="bg-gray-200 p-4 rounded-lg hover:bg-gray-300">1</button>
+                <button id="btn-two" class="bg-gray-200 p-4 rounded-lg hover:bg-gray-300">2</button>
+                <button id="btn-three" class="bg-gray-200 p-4 rounded-lg hover:bg-gray-300">3</button>
+                <button id="btn-four" class="bg-green-500 text-white p-4 rounded-lg hover:bg-green-600">4</button>
+                <button id="btn-six" class="bg-green-700 text-white p-4 rounded-lg hover:bg-green-800">6</button>
+                <button id="btn-wicket" class="bg-red-600 text-white p-4 rounded-lg hover:bg-red-700">Wicket</button>
+                <button id="btn-nb" class="bg-yellow-500 text-white p-4 rounded-lg hover:bg-yellow-600">No Ball</button>
+                <button id="btn-wide" class="bg-blue-500 text-white p-4 rounded-lg hover:bg-blue-600">Wide</button>
+            </div>
+        </div>
+    </div>
+    <script src="model.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
