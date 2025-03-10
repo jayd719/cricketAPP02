@@ -1,0 +1,132 @@
+@startuml ERD Version 2
+' Title
+title Database Schema for Cricket Management System
+
+' Define colors
+skinparam class {
+    BackgroundColor<<entity>> #e6dd34
+    BorderColor #000000
+    ArrowColor #000000
+}
+
+entity Users {
+    * user_id : INT <<PK>>
+    --
+    username : VARCHAR(100) <<UQ>>
+    email : VARCHAR(255) <<UQ>>
+    password_hash : VARCHAR(255)
+    role : ENUM
+    created_at : TIMESTAMP
+    last_login : TIMESTAMP NULL
+}
+
+entity Tournaments {
+    * tournament_id : INT <<PK>>
+    --
+    tournament_name : VARCHAR(100) <<UQ>>
+    start_date : DATE
+    end_date : DATE
+    location : VARCHAR(255)
+    status : ENUM
+    created_by : INT <<FK>>
+}
+
+entity Players {
+    * player_id : INT <<PK>>
+    --
+    player_name : VARCHAR(100) <<UQ>>
+    date_of_birth : DATE
+    batting_style : VARCHAR(50)
+    bowling_style : VARCHAR(50)
+    user_id : INT <<FK>>
+}
+
+entity Teams {
+    * team_id : INT <<PK>>
+    --
+    team_name : VARCHAR(100) <<UQ>>
+    user_id : INT <<FK>>
+    tournament_id : INT <<FK>>
+    captain_id : INT <<FK>>
+}
+
+entity Matches {
+    * match_id : INT <<PK>>
+    --
+    match_datetime : DATETIME
+    venue : VARCHAR(255)
+    team1_id : INT <<FK>>
+    team2_id : INT <<FK>>
+    tournament_id : INT <<FK>>
+    match_status : ENUM
+    winning_team_id : INT <<FK>>
+}
+
+entity TeamPlayers {
+    * team_player_id : INT <<PK>>
+    --
+    team_id : INT <<FK>>
+    player_id : INT <<FK>>
+    match_id : INT <<FK>>
+}
+
+entity Deliveries {
+    * delivery_id : INT <<PK>>
+    --
+    match_id : INT <<FK>>
+    inning : INT
+    overs : INT
+    ball : INT
+    batsman : INT <<FK>>
+    non_striker : INT <<FK>>
+    bowler : INT <<FK>>
+    is_super_overs : BOOLEAN
+    wide_runs : INT
+    bye_runs : INT
+    legbye_runs : INT
+    noball_runs : INT
+    penalty_runs : INT
+    batsman_runs : INT
+    extra_runs : INT
+    total_runs : INT
+    wicket_taken : BOOLEAN
+    bowling_speed : DECIMAL(5,2)
+}
+
+entity Dismissals {
+    * dismissal_id : INT <<PK>>
+    --
+    delivery_id : INT <<FK>>
+    dismissed_batsman : INT <<FK>>
+    bowler_id : INT <<FK>>
+    dismissal_type : ENUM
+}
+
+entity DismissalFielders {
+    * dismissal_fielder_id : INT <<PK>>
+    --
+    dismissal_id : INT <<FK>>
+    fielder : INT <<FK>>
+}
+
+Users ||--|{ Tournaments : "created"
+Users ||--|{ Players : "has"
+Users ||--|{ Teams : "owns"
+
+Tournaments ||--|{ Teams : "includes"
+Tournaments ||--|{ Matches : "has"
+
+Teams ||--|{ Matches : "plays in"
+Teams ||--|{ TeamPlayers : "has"
+Teams ||--|{ Players : "has"
+
+Matches ||--|{ TeamPlayers : "includes"
+Matches ||--|{ Deliveries : "has"
+Matches ||--|{ Dismissals : "has"
+
+Deliveries ||--|{ Dismissals : "leads to"
+Deliveries ||--|{ Players : "involves"
+
+Dismissals ||--|{ DismissalFielders : "involves"
+
+@enduml

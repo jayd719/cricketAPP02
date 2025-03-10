@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Document</title>
+</head>
+
+<body>
+    <main class="container mx-auto">
+        <h1>Design Specification Document for Cricket Match Database</h1>
+        <h2>1. <strong>Introduction</strong></h2>
+        <p>
+            This document outlines the design and implementation details for a <strong>Cricket Match Database</strong>.
+            The
+            system is aimed at storing and managing comprehensive data related to cricket matches, teams, players,
+            deliveries
+            (balls), dismissals, and match statistics. The primary objective is to track matches, player performances,
+            and other
+            match events while ensuring data integrity, scalability, and performance optimization.
+        </p>
+        <h2>2. <strong>System Requirements</strong></h2>
+        <p><strong>2.1 Functional Requirements</strong></p>
+        <ul>
+            <li><strong>Player Management</strong>: Ability to add, update, and delete player information.</li>
+            <li><strong>Team Management</strong>: Ability to add, update, and delete team information, including which
+                players
+                belong to which team.</li>
+            <li><strong>Match Tracking</strong>: Record match details, including date, venue, and participating teams.
+            </li>
+            <li><strong>Delivery Tracking</strong>: Record detailed information about each delivery (ball), including
+                batsman,
+                bowler, and various runs.</li>
+            <li><strong>Dismissal Tracking</strong>: Track dismissals (wickets) and the type of dismissal.</li>
+            <li><strong>Query Support</strong>: Provide fast querying options, including searching by player, team,
+                match, or
+                delivery.</li>
+            <li><strong>Reporting</strong>: Generate reports for player and team performances, match summaries, and
+                statistics.
+            </li>
+        </ul>
+        <p><strong>2.2 Non-Functional Requirements</strong></p>
+        <ul>
+            <li><strong>Data Integrity</strong>: Ensure referential integrity between tables using foreign keys.</li>
+            <li><strong>Performance</strong>: Optimize queries for faster data retrieval, especially when dealing with
+                large
+                datasets.</li>
+            <li><strong>Scalability</strong>: The system should be able to handle a growing number of matches, players,
+                and
+                deliveries over time.</li>
+            <li><strong>Security</strong>: Ensure the database is secure and protected against unauthorized access.</li>
+        </ul>
+
+        <h2>3. <strong>Database Design</strong></h2>
+
+        <p>This database design tracks cricket matches, teams, players, and ball-by-ball details efficiently.
+            The
+            Players
+            and Teams
+            tables store basic information. The TeamPlayers table links players to teams for each match. The
+            Matches
+            table
+            records
+            games with two competing teams. Deliveries logs every ball, including runs and extras. Dismissals
+            tracks how
+            wickets
+            fall, and DismissalFielders allows multiple fielders for run-outs. Foreign keys ensure data
+            accuracy, and
+            indexes
+            improve search speed. This design avoids duplicate data, keeps match history, and supports player
+            transfers
+            between
+            teams over time. It is well-structured, scalable, and useful for cricket analysis.</p>
+        <img width="100%" src="../out/docs/UML_/ERD/ERD.svg" alt="">
+
+
+        <h2>Strenghts of Design</h2>
+        <p>The design follows good normalization principles, meaning the data is organized without redundancy.
+            For
+            example,
+            the
+            Players, Teams, and Matches tables are separate, ensuring each piece of information is stored in
+            only one
+            place.
+            This
+            makes the database easier to manage and update. Additionally, the TeamPlayers and MatchTeams tables
+            create
+            many-to-many
+            relationships between players, teams, and matches. This means players can belong to multiple teams,
+            and
+            teams
+            can play
+            in multiple matches without repeating data.</p>
+
+        <p>Foreign keys help maintain the integrity of the data. They make sure that all the references between
+            tables
+            are
+            correct.
+            For example, a player_id in the TeamPlayers table can only refer to a valid player in the Players
+            table. The
+            use
+            of ON
+            DELETE CASCADE ensures that if a player or team is deleted, all their associated data in other
+            tables (like
+            matches or
+            team memberships) will also be deleted automatically. This prevents orphaned or broken data.</p>
+        <p>Indexing helps speed up search queries, making it faster to find specific data in large tables.
+            Indexes on
+            columns like
+            match_id, batsman, bowler, and non_striker allow quicker searches for match and player details. The
+            unique
+            constraint on
+            the combination of match_id, inning, over, and ball ensures that no two deliveries are recorded the
+            same,
+            maintaining
+            data accuracy and integrity.</p>
+    </main>
+    <script src="https://jayd719.github.io/assets/reports/appReportsV2.js"></script>
+
+
+
+    <script>
+        document.documentElement.setAttribute("data-theme", "emerald");  
+    </script>
+</body>
+
+</html>

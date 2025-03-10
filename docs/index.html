@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Document</title>
+</head>
+
+<body>
+    <main>
+        <h2><strong>Software Engineering Design Documentation</strong></h2>
+        <h3><strong>1. Introduction</strong></h3>
+        <h4><strong>1.1 Purpose</strong></h4>
+        <p>This document explains the design of the Cricket Application, a flexible and well-organized system for
+            handling cricket
+            data. It keeps track of players, teams, matches, ball-by-ball events, and dismissals. The system is built
+            using
+            Microservices Architecture, which makes it easy to scale and manage. It uses modern technologies like Kafka
+            for
+            messaging, Celery for task management, and Docker for running services smoothly. The design ensures
+            efficient data
+            processing, real-time updates, and reliability. This application helps cricket fans, analysts, and teams
+            access and
+            manage match data easily while ensuring high performance and smooth operations across different services.
+        </p>
+        <h4><strong>1.2 Scope</strong></h4>
+        <p>The application provides the following features:</p>
+        <ul>
+            <li>
+                <p>Player and team management.</p>
+            </li>
+            <li>
+                <p>Match scheduling and tracking.</p>
+            </li>
+            <li>
+                <p>Ball-by-ball delivery tracking.</p>
+            </li>
+            <li>
+                <p>Real-time updates and notifications.</p>
+            </li>
+            <li>
+                <p>Analytics and statistics.</p>
+            </li>
+        </ul>
+        <h4><strong>1.3 Target Audience</strong></h4>
+        <ul>
+            <li>
+                <p>Developers</p>
+            </li>
+            <li>
+                <p>System Architects</p>
+            </li>
+            <li>
+                <p>QA Engineers</p>
+            </li>
+            <li>
+                <p>Product Managers</p>
+            </li>
+        </ul>
+        <hr>
+        <h3><strong>2. System Architecture</strong></h3>
+        <h4><strong>2.1 High-Level Architecture</strong></h4>
+        <p>The application follows a <strong>Microservices Architecture</strong> with the following components:</p>
+        <ol start="1">
+            <li>
+                <p><strong>API Gateway</strong>: Single entry point for all client requests.</p>
+            </li>
+            <li>
+                <p><strong>Microservices</strong>:</p>
+                <ul>
+                    <li>
+                        <p>Player Service</p>
+                    </li>
+                    <li>
+                        <p>Team Service</p>
+                    </li>
+                    <li>
+                        <p>Match Service</p>
+                    </li>
+                    <li>
+                        <p>Delivery Service</p>
+                    </li>
+                    <li>
+                        <p>Dismissal Service</p>
+                    </li>
+                    <li>
+                        <p>DismissalFielder Service</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Message Broker</strong>: Kafka for event streaming.</p>
+            </li>
+            <li>
+                <p><strong>Task Queue</strong>: Celery for background task processing.</p>
+            </li>
+            <li>
+                <p><strong>Database</strong>: PostgreSQL for structured data storage.</p>
+            </li>
+            <li>
+                <p><strong>Cache</strong>: Redis for caching frequently accessed data.</p>
+            </li>
+            <li>
+                <p><strong>Frontend</strong>: React for the user interface.</p>
+            </li>
+        </ol>
+        <h4><strong>2.2 Architecture Diagram</strong></h4>
+        <div class="md-code-block">
+            <div class="md-code-block-banner-wrap">
+                <div class="md-code-block-banner">
+                    <div class="md-code-block-infostring"></div>
+                    <div class="md-code-block-action">
+                        <div class="ds-markdown-code-copy-button">Copy</div>
+                    </div>
+                </div>
+            </div>
+            <pre>+-------------------+       +-------------------+       +-------------------+
+|    Frontend       |       |    API Gateway    |       |    Microservices  |
+|  (React App)      | &lt;---&gt; |  (Node.js/Express)| &lt;---&gt; |  (Player, Team,   |
++-------------------+       +-------------------+       |  Match, Delivery, |
+                                                       |  Dismissal, etc.)  |
+                                                       +-------------------+
+                                                               ^
+                                                               |
+                                                               v
++-------------------+       +-------------------+       +-------------------+
+|    Kafka          |       |    Celery         |       |    Database       |
+|  (Event Streaming)| &lt;---&gt; |  (Task Queue)     | &lt;---&gt; |  (PostgreSQL)     |
++-------------------+       +-------------------+       +-------------------+</pre>
+        </div>
+        <hr>
+        <h3><strong>3. Microservices Design</strong></h3>
+        <h4><strong>3.1 Player Service</strong></h4>
+        <ul>
+            <li>
+                <p><strong>Responsibilities</strong>: Manage player data (CRUD operations).</p>
+            </li>
+            <li>
+                <p><strong>Endpoints</strong>:</p>
+                <ul>
+                    <li>
+                        <p><code>GET /players</code>: Fetch all players.</p>
+                    </li>
+                    <li>
+                        <p><code>POST /players</code>: Add a new player.</p>
+                    </li>
+                    <li>
+                        <p><code>GET /players/{id}</code>: Fetch a specific player.</p>
+                    </li>
+                    <li>
+                        <p><code>PUT /players/{id}</code>: Update a player.</p>
+                    </li>
+                    <li>
+                        <p><code>DELETE /players/{id}</code>: Delete a player.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h4><strong>3.2 Team Service</strong></h4>
+        <ul>
+            <li>
+                <p><strong>Responsibilities</strong>: Manage team data (CRUD operations).</p>
+            </li>
+            <li>
+                <p><strong>Endpoints</strong>:</p>
+                <ul>
+                    <li>
+                        <p><code>GET /teams</code>: Fetch all teams.</p>
+                    </li>
+                    <li>
+                        <p><code>POST /teams</code>: Add a new team.</p>
+                    </li>
+                    <li>
+                        <p><code>GET /teams/{id}</code>: Fetch a specific team.</p>
+                    </li>
+                    <li>
+                        <p><code>PUT /teams/{id}</code>: Update a team.</p>
+                    </li>
+                    <li>
+                        <p><code>DELETE /teams/{id}</code>: Delete a team.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h4><strong>3.3 Match Service</strong></h4>
+        <ul>
+            <li>
+                <p><strong>Responsibilities</strong>: Manage match data (CRUD operations).</p>
+            </li>
+            <li>
+                <p><strong>Endpoints</strong>:</p>
+                <ul>
+                    <li>
+                        <p><code>GET /matches</code>: Fetch all matches.</p>
+                    </li>
+                    <li>
+                        <p><code>POST /matches</code>: Add a new match.</p>
+                    </li>
+                    <li>
+                        <p><code>GET /matches/{id}</code>: Fetch a specific match.</p>
+                    </li>
+                    <li>
+                        <p><code>PUT /matches/{id}</code>: Update a match.</p>
+                    </li>
+                    <li>
+                        <p><code>DELETE /matches/{id}</code>: Delete a match.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h4><strong>3.4 Delivery Service</strong></h4>
+        <ul>
+            <li>
+                <p><strong>Responsibilities</strong>: Manage ball-by-ball delivery data.</p>
+            </li>
+            <li>
+                <p><strong>Endpoints</strong>:</p>
+                <ul>
+                    <li>
+                        <p><code>GET /deliveries</code>: Fetch all deliveries.</p>
+                    </li>
+                    <li>
+                        <p><code>POST /deliveries</code>: Add a new delivery.</p>
+                    </li>
+                    <li>
+                        <p><code>GET /deliveries/{id}</code>: Fetch a specific delivery.</p>
+                    </li>
+                    <li>
+                        <p><code>PUT /deliveries/{id}</code>: Update a delivery.</p>
+                    </li>
+                    <li>
+                        <p><code>DELETE /deliveries/{id}</code>: Delete a delivery.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h4><strong>3.5 Dismissal Service</strong></h4>
+        <ul>
+            <li>
+                <p><strong>Responsibilities</strong>: Manage dismissal data.</p>
+            </li>
+            <li>
+                <p><strong>Endpoints</strong>:</p>
+                <ul>
+                    <li>
+                        <p><code>GET /dismissals</code>: Fetch all dismissals.</p>
+                    </li>
+                    <li>
+                        <p><code>POST /dismissals</code>: Add a new dismissal.</p>
+                    </li>
+                    <li>
+                        <p><code>GET /dismissals/{id}</code>: Fetch a specific dismissal.</p>
+                    </li>
+                    <li>
+                        <p><code>PUT /dismissals/{id}</code>: Update a dismissal.</p>
+                    </li>
+                    <li>
+                        <p><code>DELETE /dismissals/{id}</code>: Delete a dismissal.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h4><strong>3.6 DismissalFielder Service</strong></h4>
+        <ul>
+            <li>
+                <p><strong>Responsibilities</strong>: Manage fielder involvement in dismissals.</p>
+            </li>
+            <li>
+                <p><strong>Endpoints</strong>:</p>
+                <ul>
+                    <li>
+                        <p><code>GET /dismissalFielders</code>: Fetch all fielders.</p>
+                    </li>
+                    <li>
+                        <p><code>POST /dismissalFielders</code>: Add a new fielder.</p>
+                    </li>
+                    <li>
+                        <p><code>DELETE /dismissalFielders/{id}</code>: Remove a fielder.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <hr>
+        <h3><strong>4. Event-Driven Workflow</strong></h3>
+        <h4><strong>4.1 Kafka Integration</strong></h4>
+        <ul>
+            <li>
+                <p><strong>Topics</strong>:</p>
+                <ul>
+                    <li>
+                        <p><code>match_updates</code>: For match-related events.</p>
+                    </li>
+                    <li>
+                        <p><code>player_performance</code>: For player performance events.</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Producers</strong>: Publish events to Kafka topics.</p>
+            </li>
+            <li>
+                <p><strong>Consumers</strong>: Listen for events and trigger Celery tasks.</p>
+            </li>
+        </ul>
+        <h4><strong>4.2 Celery Integration</strong></h4>
+        <ul>
+            <li>
+                <p><strong>Tasks</strong>:</p>
+                <ul>
+                    <li>
+                        <p><code>send_notification</code>: Send notifications for match updates.</p>
+                    </li>
+                    <li>
+                        <p><code>generate_report</code>: Generate reports for matches.</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p><strong>Workers</strong>: Process tasks asynchronously.</p>
+            </li>
+        </ul>
+        <hr>
+        <h3><strong>5. Database Design</strong></h3>
+        <h4><strong>5.1 Tables</strong></h4>
+        <ul>
+            <li>
+                <p><strong>Players</strong>: <code>player_id</code>, <code>player_name</code>.</p>
+            </li>
+            <li>
+                <p><strong>Teams</strong>: <code>team_id</code>, <code>team_name</code>.</p>
+            </li>
+            <li>
+                <p><strong>Matches</strong>: <code>match_id</code>, <code>match_date</code>, <code>venue</code>,
+                    <code>team1_id</code>, <code>team2_id</code>.
+                </p>
+            </li>
+            <li>
+                <p><strong>Deliveries</strong>: <code>delivery_id</code>, <code>match_id</code>, <code>inning</code>,
+                    <code>over</code>, <code>ball</code>, <code>batsman</code>, <code>non_striker</code>,
+                    <code>bowler</code>, <code>total_runs</code>.
+                </p>
+            </li>
+            <li>
+                <p><strong>Dismissals</strong>: <code>dismissal_id</code>, <code>delivery_id</code>,
+                    <code>dismissed_batsman</code>, <code>dismissal_type</code>.
+                </p>
+            </li>
+            <li>
+                <p><strong>DismissalFielders</strong>: <code>dismissal_fielder_id</code>, <code>dismissal_id</code>,
+                    <code>fielder</code>.
+                </p>
+            </li>
+        </ul>
+        <h4><strong>5.2 Relationships</strong></h4>
+        <ul>
+            <li>
+                <p>One-to-Many: Teams → Players, Matches → Deliveries.</p>
+            </li>
+            <li>
+                <p>Many-to-Many: Dismissals → Fielders.</p>
+            </li>
+        </ul>
+        <hr>
+        <h3><strong>6. Deployment</strong></h3>
+        <h4><strong>6.1 Docker</strong></h4>
+        <ul>
+            <li>
+                <p>Containerize each microservice and deploy using Docker.</p>
+            </li>
+        </ul>
+        <h4><strong>6.2 Kubernetes</strong></h4>
+        <ul>
+            <li>
+                <p>Use Kubernetes for orchestration and scaling.</p>
+            </li>
+        </ul>
+        <h4><strong>6.3 Cloud Deployment</strong></h4>
+        <ul>
+            <li>
+                <p>Deploy on AWS, Azure, or Google Cloud.</p>
+            </li>
+        </ul>
+        <hr>
+        <h3><strong>7. Testing</strong></h3>
+        <h4><strong>7.1 Unit Testing</strong></h4>
+        <ul>
+            <li>
+                <p>Use <strong>Jest</strong> or <strong>Mocha</strong> for testing individual components.</p>
+            </li>
+        </ul>
+        <h4><strong>7.2 Integration Testing</strong></h4>
+        <ul>
+            <li>
+                <p>Test interactions between microservices.</p>
+            </li>
+        </ul>
+        <h4><strong>7.3 End-to-End Testing</strong></h4>
+        <ul>
+            <li>
+                <p>Use <strong>Selenium</strong> for UI testing.</p>
+            </li>
+        </ul>
+        <hr>
+        <h3><strong>8. Future Enhancements</strong></h3>
+        <ul>
+            <li>
+                <p>Add machine learning for player performance prediction.</p>
+            </li>
+            <li>
+                <p>Integrate payment gateways for ticket booking.</p>
+            </li>
+            <li>
+                <p>Build a fantasy cricket league feature.</p>
+            </li>
+        </ul>
+        <hr>
+
+    </main>
+
+    <script src="https://jayd719.github.io/assets/reports/appReportsV2.js"></script>
+    <script src="https://jayd719.github.io/assets/reports/app-main.js"></script>
+    <script src=""></script>
+
+
+    <script>
+        document.documentElement.setAttribute("data-theme", "emerald");  
+    </script>
+</body>
+
+</html>

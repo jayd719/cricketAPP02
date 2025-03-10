@@ -1,0 +1,63 @@
+@startuml API
+skinparam linetype ortho
+
+title High-Performance Logging API Architecture
+
+package "Client" {
+  [Frontend App] --> [Logging API]
+}
+
+package "API Layer" {
+  [Logging API] --> [Message Queue]
+  note right: Accepts, validates, and enqueues logs.
+}
+
+package "Message Queue" {
+  [Message Queue] --> [Worker 1]
+  [Message Queue] --> [Worker 2]
+  [Message Queue] --> [Worker N]
+  note right: Buffers logs and handles traffic spikes.
+}
+
+package "Worker Layer" {
+  [Worker 1] --> [Short-Term Storage]
+  [Worker 2] --> [Short-Term Storage]
+  [Worker N] --> [Short-Term Storage]
+  note right: Processes and stores logs.
+}
+
+package "Data Storage" {
+  database "Short-Term Storage" as ShortTermStorage {
+    [Cassandra/InfluxDB]
+  }
+  database "Long-Term Storage" as LongTermStorage {
+    [AWS S3/Google Cloud Storage]
+  }
+  [Short-Term Storage] --> [Long-Term Storage]
+  note right of ShortTermStorage: Real-time analytics.
+  note right of LongTermStorage: Historical analysis.
+}
+
+package "Stream Processing" {
+  [Stream Processor] --> [Real-Time Analytics]
+  [Stream Processor] --> [Caching Layer]
+  note right: Computes metrics and updates dashboards.
+}
+
+package "Analytics and Reporting" {
+  [Real-Time Analytics] --> [Dashboard]
+  [Caching Layer] --> [Dashboard]
+  note right: Visualizes metrics.
+}
+
+[Frontend App] --> [Logging API] : POST /log
+[Logging API] --> [Message Queue] : Enqueue Log
+[Message Queue] --> [Worker 1] : Consume Log
+[Worker 1] --> [Short-Term Storage] : Store Log
+[Short-Term Storage] --> [Stream Processor] : Stream Logs
+[Stream Processor] --> [Real-Time Analytics] : Compute Metrics
+[Real-Time Analytics] --> [Dashboard] : Update Metrics
+[Stream Processor] --> [Caching Layer] : Cache Metrics
+[Short-Term Storage] --> [Long-Term Storage] : Archive Logs
+
+@enduml

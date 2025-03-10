@@ -1,0 +1,104 @@
+@startuml ERD
+' Title
+title Database Schema for Cricket Management System
+
+' Define colors
+skinparam class {
+    BackgroundColor<<entity>> #e6dd34
+    BorderColor #000000
+    ArrowColor #000000
+}
+
+' Entities
+entity Players <<Players>> {
+    *player_id: INT <<PK>> <<Auto Increment>>
+    --
+    player_name: VARCHAR(100) <<Unique>> <<NotNull>>
+}
+
+entity Teams <<Teams>> {
+    *team_id: INT <<PK>> <<Auto Increment>>
+    --
+    team_name: VARCHAR(100) <<Unique>> <<NotNull>>
+}
+
+entity TeamPlayers <<TeamPlayers>> {
+    *team_player_id: INT <<PK>> <<Auto Increment>>
+    --
+    team_id: INT <<FK>> <<NotNull>>
+    player_id: INT <<FK>> <<NotNull>>
+    match_id: INT <<FK>> <<NotNull>>
+    --
+    Unique(team_id, player_id, match_id)
+}
+
+entity Matches <<Matches>> {
+    *match_id: INT <<PK>> <<Auto Increment>>
+    --
+    match_date: DATE <<NotNull>>
+    venue: VARCHAR(255)
+    team1_id: INT <<FK>> <<NotNull>>
+    team2_id: INT <<FK>> <<NotNull>>
+}
+
+entity Deliveries <<Deliveries>> {
+    *delivery_id: INT <<PK>> <<Auto Increment>>
+    --
+    match_id: INT <<FK>> <<NotNull>>
+    inning: INT <<NotNull>>
+    over: INT <<NotNull>>
+    ball: INT <<NotNull>>
+    batsman: INT <<FK>> <<NotNull>>
+    non_striker: INT <<FK>> <<NotNull>>
+    bowler: INT <<FK>> <<NotNull>>
+    is_super_over: BOOLEAN <<Default=FALSE>>
+    wide_runs: INT <<Default=0>>
+    bye_runs: INT <<Default=0>>
+    legbye_runs: INT <<Default=0>>
+    noball_runs: INT <<Default=0>>
+    penalty_runs: INT <<Default=0>>
+    batsman_runs: INT <<Default=0>>
+    extra_runs: INT <<Default=0>>
+    total_runs: INT <<NotNull>>
+    --
+    Unique(match_id, inning, over, ball)
+}
+
+entity Dismissals <<Dismissals>> {
+    *dismissal_id: INT <<PK>> <<Auto Increment>>
+    --
+    delivery_id: INT <<FK>> <<NotNull>>
+    dismissed_batsman: INT <<FK>> <<NotNull>>
+    dismissal_type: ENUM('bowled', 'caught', 'lbw', 'run out', 'stumped', 'hit wicket', 'handled the ball')
+}
+
+entity DismissalFielders <<DismissalFielders>> {
+    *dismissal_fielder_id: INT <<PK>> <<Auto Increment>>
+    --
+    dismissal_id: INT <<FK>> <<NotNull>>
+    fielder: INT <<FK>> <<NotNull>>
+}
+
+' Relationships
+Players ||--o{ TeamPlayers : "player_id"
+Teams ||--o{ TeamPlayers : "team_id"
+Matches ||--o{ TeamPlayers : "match_id"
+Teams ||--o{ Matches : "team1_id"
+Teams ||--o{ Matches : "team2_id"
+Matches ||--o{ Deliveries : "match_id"
+Players ||--o{ Deliveries : "batsman"
+Players ||--o{ Deliveries : "non_striker"
+Players ||--o{ Deliveries : "bowler"
+Deliveries ||--o{ Dismissals : "delivery_id"
+Players ||--o{ Dismissals : "dismissed_batsman"
+Dismissals ||--o{ DismissalFielders : "dismissal_id"
+Players ||--o{ DismissalFielders : "fielder"
+
+' Indexes
+Deliveries }|..|| idx_match_id : "match_id"
+Deliveries }|..|| idx_batsman : "batsman"
+Deliveries }|..|| idx_bowler : "bowler"
+Deliveries }|..|| idx_non_striker : "non_striker"
+Deliveries }|..|| idx_inning_over_ball : "inning, over, ball"
+
+@enduml

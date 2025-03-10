@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controller Layer</title>
+</head>
+
+<body class="text-sm">
+    <main>
+        <h2>Responsibilities of the Controller Layer</h2>
+        <ul>
+            <li>Request Handling: Accept HTTP requests (GET, POST, PUT, DELETE).</li>
+            <li>Validation: Validate input data (e.g., ensure required fields are present).</li>
+            <li>Business Logic: Process requests by interacting with the Model layer.</li>
+            <li>Response Generation: Return appropriate HTTP responses (e.g., JSON, HTML, or error messages).</li>
+        </ul>
+
+        <h2>Desing Of Controller Layer</h2>
+        <p>This controller design organizes how the app handles requests for cricket data. Each table (Players,
+            Teams,
+            Matches, etc.) has its own controller with endpoints for common operations like adding, updating,
+            deleting, and
+            fetching data. For example:</p>
+        <ul>
+            <li>
+                <p><strong>Players</strong>: Add, update, or delete players; fetch all players or a specific one.
+                </p>
+            </li>
+            <li>
+                <p><strong>Teams</strong>: Manage teams similarly.</p>
+            </li>
+            <li>
+                <p><strong>Matches</strong>: Add matches, fetch match details, or get players in a match.</p>
+            </li>
+            <li>
+                <p><strong>Deliveries</strong>: Track ball-by-ball details for matches.</p>
+            </li>
+            <li>
+                <p><strong>Dismissals</strong>: Record how batsmen get out.</p>
+            </li>
+            <li>
+                <p><strong>DismissalFielders</strong>: Track fielders involved in dismissals.</p>
+            </li>
+        </ul>
+
+
+        <h2>API Endpoints</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Controller</strong></th>
+                    <th><strong>Endpoint</strong></th>
+                    <th><strong>HTTP Method</strong></th>
+                    <th><strong>Purpose</strong></th>
+                    <th><strong>Input</strong></th>
+                    <th><strong>Output</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Player Controller</strong></td>
+                    <td><code>/players</code></td>
+                    <td>GET</td>
+                    <td>Fetch all players</td>
+                    <td>None</td>
+                    <td>List of players (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/players/{id}</code></td>
+                    <td>GET</td>
+                    <td>Fetch a specific player by ID</td>
+                    <td>None</td>
+                    <td>Player details (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/players</code></td>
+                    <td>POST</td>
+                    <td>Add a new player</td>
+                    <td><code>{ "player_name": "Player Name" }</code></td>
+                    <td>Newly created player (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/players/{id}</code></td>
+                    <td>PUT</td>
+                    <td>Update a player</td>
+                    <td><code>{ "player_name": "Updated Name" }</code></td>
+                    <td>Updated player (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/players/{id}</code></td>
+                    <td>DELETE</td>
+                    <td>Delete a player</td>
+                    <td>None</td>
+                    <td>Success message or error</td>
+                </tr>
+                <tr>
+                    <td><strong>Team Controller</strong></td>
+                    <td><code>/teams</code></td>
+                    <td>GET</td>
+                    <td>Fetch all teams</td>
+                    <td>None</td>
+                    <td>List of teams (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/teams/{id}</code></td>
+                    <td>GET</td>
+                    <td>Fetch a specific team by ID</td>
+                    <td>None</td>
+                    <td>Team details (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/teams</code></td>
+                    <td>POST</td>
+                    <td>Add a new team</td>
+                    <td><code>{ "team_name": "Team Name" }</code></td>
+                    <td>Newly created team (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/teams/{id}</code></td>
+                    <td>PUT</td>
+                    <td>Update a team</td>
+                    <td><code>{ "team_name": "Updated Name" }</code></td>
+                    <td>Updated team (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/teams/{id}</code></td>
+                    <td>DELETE</td>
+                    <td>Delete a team</td>
+                    <td>None</td>
+                    <td>Success message or error</td>
+                </tr>
+                <tr>
+                    <td><strong>Match Controller</strong></td>
+                    <td><code>/matches</code></td>
+                    <td>GET</td>
+                    <td>Fetch all matches</td>
+                    <td>None</td>
+                    <td>List of matches (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/matches/{id}</code></td>
+                    <td>GET</td>
+                    <td>Fetch a specific match by ID</td>
+                    <td>None</td>
+                    <td>Match details (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/matches</code></td>
+                    <td>POST</td>
+                    <td>Add a new match</td>
+                    <td><code>{ "match_date": "2023-10-01", "venue": "Stadium", "team1_id": 1, "team2_id": 2 }</code>
+                    </td>
+                    <td>Newly created match (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/matches/{id}</code></td>
+                    <td>PUT</td>
+                    <td>Update a match</td>
+                    <td><code>{ "venue": "Updated Stadium" }</code></td>
+                    <td>Updated match (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/matches/{id}</code></td>
+                    <td>DELETE</td>
+                    <td>Delete a match</td>
+                    <td>None</td>
+                    <td>Success message or error</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/matches/{id}/players</code></td>
+                    <td>GET</td>
+                    <td>Fetch all players in a match</td>
+                    <td>None</td>
+                    <td>List of players (JSON)</td>
+                </tr>
+                <tr>
+                    <td><strong>Delivery Controller</strong></td>
+                    <td><code>/deliveries</code></td>
+                    <td>GET</td>
+                    <td>Fetch all deliveries</td>
+                    <td>None</td>
+                    <td>List of deliveries (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/deliveries/{id}</code></td>
+                    <td>GET</td>
+                    <td>Fetch a specific delivery by ID</td>
+                    <td>None</td>
+                    <td>Delivery details (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/deliveries</code></td>
+                    <td>POST</td>
+                    <td>Add a new delivery</td>
+                    <td><code>{ "match_id": 1, "inning": 1, "over": 1, "ball": 1, "batsman": 1, "non_striker": 2, "bowler": 3, "total_runs": 4 }</code>
+                    </td>
+                    <td>Newly created delivery (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/deliveries/{id}</code></td>
+                    <td>PUT</td>
+                    <td>Update a delivery</td>
+                    <td><code>{ "total_runs": 6 }</code></td>
+                    <td>Updated delivery (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/deliveries/{id}</code></td>
+                    <td>DELETE</td>
+                    <td>Delete a delivery</td>
+                    <td>None</td>
+                    <td>Success message or error</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/matches/{id}/deliveries</code></td>
+                    <td>GET</td>
+                    <td>Fetch all deliveries for a specific match</td>
+                    <td>None</td>
+                    <td>List of deliveries (JSON)</td>
+                </tr>
+                <tr>
+                    <td><strong>Dismissal Controller</strong></td>
+                    <td><code>/dismissals</code></td>
+                    <td>GET</td>
+                    <td>Fetch all dismissals</td>
+                    <td>None</td>
+                    <td>List of dismissals (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/dismissals/{id}</code></td>
+                    <td>GET</td>
+                    <td>Fetch a specific dismissal by ID</td>
+                    <td>None</td>
+                    <td>Dismissal details (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/dismissals</code></td>
+                    <td>POST</td>
+                    <td>Add a new dismissal</td>
+                    <td><code>{ "delivery_id": 1, "dismissed_batsman": 1, "dismissal_type": "bowled" }</code></td>
+                    <td>Newly created dismissal (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/dismissals/{id}</code></td>
+                    <td>PUT</td>
+                    <td>Update a dismissal</td>
+                    <td><code>{ "dismissal_type": "caught" }</code></td>
+                    <td>Updated dismissal (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/dismissals/{id}</code></td>
+                    <td>DELETE</td>
+                    <td>Delete a dismissal</td>
+                    <td>None</td>
+                    <td>Success message or error</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/matches/{id}/dismissals</code></td>
+                    <td>GET</td>
+                    <td>Fetch all dismissals for a specific match</td>
+                    <td>None</td>
+                    <td>List of dismissals (JSON)</td>
+                </tr>
+                <tr>
+                    <td><strong>DismissalFielder Controller</strong></td>
+                    <td><code>/dismissalFielders</code></td>
+                    <td>GET</td>
+                    <td>Fetch all dismissal fielders</td>
+                    <td>None</td>
+                    <td>List of fielders (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/dismissalFielders</code></td>
+                    <td>POST</td>
+                    <td>Add a fielder to a dismissal</td>
+                    <td><code>{ "dismissal_id": 1, "fielder": 2 }</code></td>
+                    <td>Newly added fielder (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/dismissalFielders/{id}</code></td>
+                    <td>DELETE</td>
+                    <td>Remove a fielder from a dismissal</td>
+                    <td>None</td>
+                    <td>Success message or error</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/dismissals/{id}/fielders</code></td>
+                    <td>GET</td>
+                    <td>Fetch all fielders for a specific dismissal</td>
+                    <td>None</td>
+                    <td>List of fielders (JSON)</td>
+                </tr>
+                <tr>
+                    <td><strong>TeamPlayers Controller</strong></td>
+                    <td><code>/teamPlayers</code></td>
+                    <td>GET</td>
+                    <td>Fetch all team-player associations</td>
+                    <td>None</td>
+                    <td>List of team-player associations (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/teamPlayers</code></td>
+                    <td>POST</td>
+                    <td>Add a player to a team for a specific match</td>
+                    <td><code>{ "team_id": 1, "player_id": 1, "match_id": 1 }</code></td>
+                    <td>Newly created association (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/teamPlayers/{id}</code></td>
+                    <td>DELETE</td>
+                    <td>Remove a player from a team for a specific match</td>
+                    <td>None</td>
+                    <td>Success message or error</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/teams/{id}/players</code></td>
+                    <td>GET</td>
+                    <td>Fetch all players in a specific team</td>
+                    <td>None</td>
+                    <td>List of players (JSON)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><code>/matches/{id}/teams/{teamId}/players</code></td>
+                    <td>GET</td>
+                    <td>Fetch all players in a specific team for a match</td>
+                    <td>None</td>
+                    <td>List of players (JSON)</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </main>
+    <script src="https://jayd719.github.io/assets/reports/appReportsV2.js"></script>
+    <script src="https://jayd719.github.io/assets/reports/app-main.js"></script>
+
+
+
+    <script>
+        document.documentElement.setAttribute("data-theme", "emerald");  
+    </script>
+</body>
+</body>
+
+</html>
